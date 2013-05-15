@@ -1,1 +1,23 @@
 <?php
+/**
+ * 
+ * Implements hook_page_build().
+ */
+function editormenu_page_build(&$page) {
+//  dpm(system_region_list('seven'));
+//  dpm(user_access('access editormenu'));
+//  if (!user_access('access editormenu') || admin_menu_suppress(FALSE)) {
+//    return;
+//  }
+  $page['page_bottom']['editormenu']['#markup'] = editormenu_output();
+  
+  
+  
+}
+
+function editormenu_output() {
+  $content['#prefix'] = '<div id="editormenu" class="editormenu"><div id="editormenu-wrapper"><h2>Editor menu</h2>';
+  $content['#suffix'] = '</div></div>';
+  $content = drupal_render($content);
+  return $content;
+}
